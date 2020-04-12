@@ -1,4 +1,4 @@
 # lifeup-backend
 
 ### To run 
-'npm start'
+```npm start```
