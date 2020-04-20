@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef} from 'react';
-import { View, Image, Text, TouchableOpacity, SafeAreaView, StatusBar, ScrollView, Clipboard, Platform, TextInput} from 'react-native';
+import { View, Image, Text, TouchableOpacity, SafeAreaView, 
+    StatusBar, ScrollView, Clipboard, ActivityIndicator } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {Feather} from '@expo/vector-icons'
 import ActionTip from 'react-native-action-tips';
@@ -16,9 +17,9 @@ import styles from './styles'
 export default function Home() {
 
     const [phrase, setPhrase] = useState('')
-    const actionTipRef = useRef(null);
+    const [loading, setLoading] = useState(false)
 
-    const text = 'Ouvi dizer que só é triste quem queria, seja feliz!'
+    const actionTipRef = useRef(null);
 
     function sendMail() {
         MailComposer.composeAsync({
@@ -42,22 +43,20 @@ export default function Home() {
     }, [])
 
     async function getPhrase(){
-
+        setLoading(true)
         const response = await api.get('/prhases/phrase')
         
         console.log(response.data[0].phrase)
 
         setPhrase(response.data[0].phrase)
+        setLoading(false)
     }
     
  return (
    <SafeAreaView style={styles.container}>
-       <StatusBar barStyle="dark-content" />
+       <StatusBar barStyle="dark-content"  backgroundColor={'transparent'}/>
 
-       <ActionTip
-        ref={actionTipRef}
-        position={{ top: 40 }}
-        />
+       <ActionTip ref={actionTipRef} position={{ top: 40 }} />
 
        <View style={styles.header}>
            <Image source={logo} />
@@ -65,9 +64,23 @@ export default function Home() {
        </View>
 
         <View style={styles.phraseContainer} >
+
+            
+
             <Image source={aspas} />
             <ScrollView showsVerticalScrollIndicator={false} >
-                <Text multiline editable={false} style={[styles.phrase, {fontFamily: Platform.OS=='ios'?'Noteworthy-Light':''}]}>{phrase}</Text>
+                {loading &&
+                    <View style={styles.loading}> 
+                        <ActivityIndicator size="large" color="#0E103D" />
+                    </View>
+                }
+
+                {!loading &&
+                    <Text multiline editable={false} style={styles.phrase}>
+                        {phrase}
+                    </Text>
+                }
+                
                 <View style={styles.copyPhraseContent} >
                     <TouchableOpacity onPress={copyToClipboard}>
                         <Feather name="copy" size={20} color="gray"  />
@@ -91,13 +104,13 @@ export default function Home() {
             <View style={styles.contactContainer}>
                 <View style={styles.contact}>
                     <View style={styles.contactName} >
-                        <Text>Luiz Arthur</Text>
+                        <Text style={styles.name}>Luiz Arthur</Text>
                         <Text style={styles.position}>Design</Text>
                     </View>  
                 </View>
                 <View style={[styles.contact, {marginLeft: 10}]}>
                     <View style={styles.contactName} >
-                        <Text>Eduardo Finotti</Text>
+                        <Text style={styles. name}>Eduardo Finotti</Text>
                         <Text style={styles.position}>Desenvolvedor</Text>
                     </View>  
                 </View>
