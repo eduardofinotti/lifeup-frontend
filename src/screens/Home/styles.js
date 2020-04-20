@@ -1,45 +1,59 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const dimenssionHeight = Dimensions.get('window').height
+let footerFontSize = 11
+
+    if(dimenssionHeight>700){
+        footerFontSize = 13
+    }
 
 export default StyleSheet.create({
     
     container: {
         flex: 1,
-        paddingHorizontal: 24,
+        paddingHorizontal: 10,
         alignItems: 'center',
         backgroundColor: '#fff'
     },
 
     header: {
         alignItems: 'center',
-        marginTop: 20
+        marginTop: dimenssionHeight>600?20:5
     },
 
     phraseContainer: {
         paddingLeft: 10,
         flexDirection: 'row',
-        width: '100%',
-        height: 230,
+        justifyContent: 'center',
+        alignContent: 'center',
+        marginTop:dimenssionHeight>600?50:10,
+        height: dimenssionHeight>650?200:100,
     },
 
     phrase: {
-        padding: 10,
-        fontSize: 20,
-        marginRight: 10
+        paddingHorizontal: 10,
+        marginRight: 10,
+        fontSize:dimenssionHeight>600?21:13,
+        fontFamily: Platform.OS=='ios'?'Noteworthy-Light':'' 
+    },
+
+    loading: {
+        justifyContent: 'flex-end', 
+        height: dimenssionHeight>650?110:60
     },
 
     buttonContent: {
         flex: 1,
         justifyContent: 'flex-end',
-        alignContent: 'flex-end',
-        marginBottom: 20
+        alignContent: 'center',
+        alignItems: 'center'
     },    
 
     phraseButton: {
         padding: 15, 
-        alignItems: 'center', 
-        borderRadius: 25, 
-        width: 250, 
-        height: 55, 
+        borderRadius: 20, 
+        width: 230, 
+        height: 50, 
         alignContent: 'center', 
         alignItems: 'center', 
         justifyContent:'center' 
@@ -58,7 +72,7 @@ export default StyleSheet.create({
 
     phraseButtonText: {
         color: 'white',
-        fontSize: 22,
+        fontSize: 17,
         fontWeight: '500',
     },
 
@@ -71,6 +85,7 @@ export default StyleSheet.create({
 
     developerBy: {
         color: '#69306f',
+        fontSize: footerFontSize
     },
 
     contact: {
@@ -89,12 +104,17 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         alignContent: 'center',
-        
+    },
+
+    name: {
+        color: '#000', 
+        fontSize: footerFontSize,
+        marginLeft: 5    
     },
 
     position: {
         color: '#737380', 
-        fontSize: 12,
+        fontSize: footerFontSize,
         marginLeft: 5    
     }
 })
