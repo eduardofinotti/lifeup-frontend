@@ -1,14 +1,18 @@
 import React, { useState, useEffect, useRef} from 'react';
 import { View, Image, Text, TouchableOpacity, SafeAreaView, 
-    StatusBar, ScrollView, Clipboard, ActivityIndicator } from 'react-native';
+    StatusBar, ScrollView, Clipboard, ActivityIndicator, Alert, AsyncStorage} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {Feather} from '@expo/vector-icons'
 import ActionTip from 'react-native-action-tips';
+
+import { Notifications } from 'expo';
+import * as Permissions from 'expo-permissions';
 
 import * as MailComposer from 'expo-mail-composer'
 import api from '../../services/api'
 
 import logo from '../../assets/logo.png'
+import iconNotification from '../../../assets/iconNotification.png'
 import header from '../../assets/header.png'
 import aspas from '../../assets/aspas.png'
 
@@ -38,8 +42,66 @@ export default function Home() {
         getPhrase()
     }
 
+    async function getPermitions(){
+        const  {status}  = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+        
+        if(status !== 'granted' ) {
+            Alert.alert("Atenção!", "Você não permitiu o envio de notificações, ou deve ir nas configurações do celular para permitir notificações! :)");
+            return;
+        }
+
+        if (Platform.OS === 'android') {
+            Notifications.createChannelAndroidAsync('default', {
+              name: 'default',
+              sound: true,
+              priority: 'max',
+              vibrate: [0, 250, 250, 250],
+            });
+          }
+        let notification = Notifications.addListener(handlePush);
+    }
+
+    const handlePush = notification => {
+        console.log(">>>>>>>", notification);
+    }
+
+    const schedule = async () => {
+
+        var date = new Date();
+        console.log('Scheduling... to: ' + date)
+
+        date.setDate(date.getDate() + 1)
+        date.setHours(8, 0, 0)
+
+        const data = await Notifications.scheduleLocalNotificationAsync({
+            title: "LifeUp - Frases Motivacionais",
+            body: "Acesse o LifeUp e se inspire hoje! :)",
+            channelId: "default",
+            data: { some: { data: "mensagem recebida" } }
+        }, {
+            time: (date.getTime() + 5000),
+            repeat: 'day'
+        });
+    }
+
     useEffect(() => {
-       getPhrase()
+        getPermitions()
+        getPhrase()
+
+        setScheduler()
+        
+        async function setScheduler() {
+            var myScheduler = await AsyncStorage.getItem('@scheduler')
+
+            if(!myScheduler) {
+                console.log('Vai agendar')
+                Notifications.cancelAllScheduledNotificationsAsync()
+                schedule()
+                await AsyncStorage.setItem('@scheduler', 'scheduled')
+            } else {
+                console.log('Já agendou')
+            }
+        }
     }, [])
 
     async function getPhrase(){
@@ -64,9 +126,6 @@ export default function Home() {
        </View>
 
         <View style={styles.phraseContainer} >
-
-            
-
             <Image source={aspas} />
             <ScrollView showsVerticalScrollIndicator={false} >
                 {loading &&
