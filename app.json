@@ -1,12 +1,15 @@
 {
   "expo": {
-    "name": "lifeup",
+    "name": "LifeUp",
     "slug": "LifeUp",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
+    "notification": {
+      "icon": "./assets/iconNotification.png"
+    },
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,7 +30,7 @@
     },
     "android": {
       "package": "com.lifeup.lifeup",
-      "versionCode": 1
+      "versionCode": 2
     }
   }
 }

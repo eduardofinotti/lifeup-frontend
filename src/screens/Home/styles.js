@@ -18,7 +18,7 @@ export default StyleSheet.create({
 
     header: {
         alignItems: 'center',
-        marginTop: dimenssionHeight>600?20:5
+        marginTop: dimenssionHeight>600? 20:5
     },
 
     phraseContainer: {
@@ -26,31 +26,23 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignContent: 'center',
-        marginTop:dimenssionHeight>600?50:10,
-        height: dimenssionHeight>650?200:100,
+        marginTop:dimenssionHeight>680?50:10,
+        height: dimenssionHeight>650?250:140,
     },
 
     phrase: {
         paddingHorizontal: 10,
         marginRight: 10,
-        fontSize:dimenssionHeight>600?21:13,
+        fontSize:dimenssionHeight>600?24:15,
         fontFamily: Platform.OS=='ios'?'Noteworthy-Light':'' 
     },
 
     loading: {
         justifyContent: 'flex-end', 
         height: dimenssionHeight>650?110:60
-    },
-
-    buttonContent: {
-        flex: 1,
-        justifyContent: 'flex-end',
-        alignContent: 'center',
-        alignItems: 'center'
-    },    
+    },  
 
     phraseButton: {
-        padding: 15, 
         borderRadius: 20, 
         width: 230, 
         height: 50, 
@@ -70,6 +62,19 @@ export default StyleSheet.create({
         color: 'gray'
     },
 
+    shareText: {
+        color: '#69306D', 
+        fontSize: 15, 
+        fontWeight: 'bold'
+    },
+
+    buttonContent: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignContent: 'center',
+        alignItems: 'center'
+    },  
+
     phraseButtonText: {
         color: 'white',
         fontSize: 17,
@@ -80,41 +85,24 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'center',
-        marginBottom: 10
+        margin: 10,
     },
 
-    developerBy: {
-        color: '#69306f',
-        fontSize: footerFontSize
+    call: {
+        color: '#0E103D',
+        fontSize: footerFontSize,
+        fontWeight: 'bold'
     },
 
     contact: {
-        alignContent: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
+        marginHorizontal: 10
     },
 
     contactContainer: {
-        marginTop: 5,
-        flexDirection: 'row',
-    },
-    
-    contactName: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         alignContent: 'center',
     },
-
-    name: {
-        color: '#000', 
-        fontSize: footerFontSize,
-        marginLeft: 5    
-    },
-
-    position: {
-        color: '#737380', 
-        fontSize: footerFontSize,
-        marginLeft: 5    
-    }
+    
 })
