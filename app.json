@@ -30,7 +30,7 @@
     },
     "android": {
       "package": "com.lifeup.lifeup",
-      "versionCode": 1
+      "versionCode": 2
     }
   }
 }

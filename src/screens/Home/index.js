@@ -192,10 +192,7 @@ export default function Home() {
                     </TouchableOpacity>
                 </View>
             </View>
-
-            {/* <TouchableOpacity onPress={sendMail}>
-                <Text style={[styles.developerBy, {fontWeight: 'bold'}]}>Fale conosco: ajudalifeup@gmail.com</Text>  
-            </TouchableOpacity> */}
+            
         </View>
     </SafeAreaView>
   );
