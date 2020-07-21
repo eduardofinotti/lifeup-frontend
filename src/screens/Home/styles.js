@@ -12,8 +12,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 10,
-        alignItems: 'center',
-        backgroundColor: '#fff'
+        alignItems: 'center'
     },
 
     header: {
@@ -26,19 +25,20 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignContent: 'center',
-        marginTop:dimenssionHeight>680?50:10,
-        height: dimenssionHeight>650?250:140,
+        marginTop:dimenssionHeight>680?50:20,
+        height: dimenssionHeight>650?260:190,
     },
 
     phrase: {
         paddingHorizontal: 10,
         marginRight: 10,
-        fontSize:dimenssionHeight>600?24:15,
-        fontFamily: Platform.OS=='ios'?'Noteworthy-Light':'' 
+        fontSize:dimenssionHeight>600?19:15,
     },
 
     loading: {
-        justifyContent: 'flex-end', 
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
         height: dimenssionHeight>650?110:60
     },  
 
@@ -48,7 +48,8 @@ export default StyleSheet.create({
         height: 50, 
         alignContent: 'center', 
         alignItems: 'center', 
-        justifyContent:'center' 
+        justifyContent:'center',
+        flexDirection: 'row',
     },
 
     copyPhraseContent: {
@@ -63,15 +64,11 @@ export default StyleSheet.create({
     },
 
     shareText: {
-        color: '#69306D', 
         fontSize: 15, 
         fontWeight: 'bold'
     },
 
     buttonContent: {
-        flex: 1,
-        justifyContent: 'flex-end',
-        alignContent: 'center',
         alignItems: 'center'
     },  
 
@@ -89,13 +86,13 @@ export default StyleSheet.create({
     },
 
     call: {
-        color: '#0E103D',
         fontSize: footerFontSize,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#fff'
     },
 
     contact: {
-        marginHorizontal: 10
+        marginHorizontal: 10,
     },
 
     contactContainer: {
