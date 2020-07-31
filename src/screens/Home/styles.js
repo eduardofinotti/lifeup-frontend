@@ -53,10 +53,10 @@ export default StyleSheet.create({
     },
 
     copyPhraseContent: {
-        flex: 1,
+        // flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
-        marginRight: 30,
+        // marginRight: 30,
     },    
     
     copyPhrase: {
@@ -82,13 +82,12 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'center',
-        margin: 10,
     },
 
     call: {
         fontSize: footerFontSize,
         fontWeight: 'bold',
-        color: '#fff'
+        color: '#fff',
     },
 
     contact: {
@@ -100,6 +99,7 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         alignContent: 'center',
+        marginBottom: 10
     },
     
 })
