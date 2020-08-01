@@ -9,9 +9,9 @@ import { AppLoading } from 'expo';
 import api from '../../services/api'
 
 import { useTheme } from 'react-native-paper'
+import { translate } from '../../locale'
 
 import logo from '../../assets/logo.png'
-import headerRegular from '../../assets/headerRegular.png'
 import headerSmall from '../../assets/headerSmall.png'
 import aspas from '../../assets/aspas.png'
 
@@ -119,7 +119,7 @@ export default function Home() {
             </TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={pastePhrase}>
             <View style={{alignContent: 'center', alignItems: 'center', justifyContent: 'center', marginRight: 20, marginTop: 10}}>
-                <Text style={{color: colors.accent}}>Toque para nova frase</Text>
+                <Text style={{color: colors.accent}}>{translate('tapToMessage')}</Text>
             </View>
         </TouchableWithoutFeedback>
 
@@ -154,7 +154,7 @@ export default function Home() {
                 <LinearGradient start={{x: 0, y: 0.50}} end={{x: 1, y: 0.50}} colors={['#69306D', '#0E103D']}
                     style={styles.phraseButton}>
                     <Feather name="share" size={20} color={colors.text} style={{marginHorizontal: 10}} />
-                    <Text style={styles.phraseButtonText}>Compartilhar</Text>
+                    <Text style={styles.phraseButtonText}>{translate('shareMessage')}</Text>
                 </LinearGradient>
             </TouchableOpacity>
 
@@ -162,7 +162,7 @@ export default function Home() {
 
         <View style={styles.footer} >
             <View style={styles.contactContainer}>
-                <Text style={[styles.call, {color: colors.surface}]}>Fale conosco pelo 
+                    <Text style={[styles.call, {color: colors.surface}]}>{translate('contact')} 
                     <Text style={[{color: colors.accent}]} onPress={instagramLifeUp}> Instagram</Text>
                 </Text>
             </View>
