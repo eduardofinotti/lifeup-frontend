@@ -22,6 +22,7 @@
     "expo-font": "~8.2.1",
     "expo-linear-gradient": "~8.2.1",
     "expo-mail-composer": "~8.2.1",
+    "i18n-js": "^3.7.1",
     "native-base": "^2.13.12",
     "react": "16.11.0",
     "react-dom": "16.11.0",
