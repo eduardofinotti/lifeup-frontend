@@ -10,7 +10,7 @@
     "notification": {
       "icon": "./assets/iconNotification.png"
     },
-    "version": "2.0.0",
+    "version": "3.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -29,11 +29,11 @@
       },
       "supportsTablet": true,
       "bundleIdentifier": "com.lifeup.lifeup",
-      "buildNumber": "1.0.2"
+      "buildNumber": "1.1.0"
     },
     "android": {
       "package": "com.lifeup.lifeup",
-      "versionCode": 5,
+      "versionCode": 6,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-7656347766469977~2404248083"
       }
